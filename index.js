@@ -12,15 +12,22 @@
  */
 
 /**
- * @typedef {Object} CountResult
+ * @typedef {Object} CountResultContainer
  * @property {number} cpu
  * @property {number} memory
  */
 
 /**
+ *
+ * @param {Object} CountResult
+ * @property {CountResultContainer} limits
+ * @property {CountResultContainer} requests
+ */
+
+/**
  * Count the CPU and Memory usage for the given Deployments/DeploymentConfigs.
  * @param {Buffer|String} json
- * @returns {Promise<CountResult>}
+ * @returns CountResult
  */
 module.exports = function count(json) {
   try {
