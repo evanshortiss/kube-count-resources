@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "description": "Nifty CLI to count resource request and limits for a List of Deployments",
   "main": "index.js",
-  "bin": "bin/kcr.js",
+  "bin": {
+    "kcr": "bin/kcr.js"
+  },
   "scripts": {
     "test": "tape test/test.js"
   },
@@ -30,5 +32,16 @@
     "pretty-quick": "~3.1.0",
     "husky": "~4.3.6",
     "tape": "^5.2.2"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evanshortiss/kube-count-resources.git"
+  },
+  "bugs": {
+    "url": "https://github.com/evanshortiss/kube-count-resources/issues"
+  },
+  "homepage": "https://github.com/evanshortiss/kube-count-resources#readme"
 }
