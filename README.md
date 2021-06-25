@@ -18,7 +18,7 @@ CLI via `npm install -g kcr` and drop `npx`.
 kubectl get deployments -o json | npx kcr
 
 Requests: 0.500 Cores / 1.000 Gi
-Limits:   0.700 Cores / 1.500 Gii
+Limits:   0.700 Cores / 1.500 Gi
 ```
 
 OpenShift is also supported, so you can pass Deployments and DeploymentConfigs.
@@ -27,7 +27,7 @@ OpenShift is also supported, so you can pass Deployments and DeploymentConfigs.
 oc get dc,deployments -o json --all-namespaces | npx kcr
 
 Requests: 0.500 Cores / 1.000 Gi
-Limits:   0.700 Cores / 1.500 Gii
+Limits:   0.700 Cores / 1.500 Gi
 ```
 
 ### File List
@@ -38,5 +38,5 @@ kubectl get deployments -o json > deployments.json
 npx kcr deployments.json
 
 Requests: 0.500 Cores / 1.000 Gi
-Limits:   0.700 Cores / 1.500 Gii
+Limits:   0.700 Cores / 1.500 Gi
 ```
