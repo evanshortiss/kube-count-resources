@@ -1,6 +1,6 @@
 {
   "name": "kcr",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Nifty CLI to count resource request and limits for a List of Deployments",
   "main": "index.js",
   "bin": {
