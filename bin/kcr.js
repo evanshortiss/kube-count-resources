@@ -40,8 +40,8 @@ const print = (result) => {
 if (process.stdin.isTTY) {
   // User provided a list of files as arguments
   const totals = {
-    cpu: 0,
-    memory: 0
+    limits: { cpu: 0, memory: 0 },
+    requests: { cpu: 0, memory: 0 }
   };
 
   if (process.argv.length <= 2) {
@@ -58,9 +58,11 @@ if (process.stdin.isTTY) {
     }
 
     if (existsSync(file)) {
-      const result = count(readFileSync(file));
-      totals.cpu += result.cpu;
-      totals.memory += result.memory;
+      const { limits, requests } = count(readFileSync(file));
+      totals.limits.cpu += limits.cpu;
+      totals.limits.memory += limits.memory;
+      totals.requests.cpu += requests.cpu;
+      totals.requests.memory += requests.memory;
     } else {
       throw new Error(`File ${file} does not exist`);
     }

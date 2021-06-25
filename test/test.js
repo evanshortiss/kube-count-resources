@@ -4,7 +4,7 @@ const count = require('../');
 const { execSync } = require('child_process');
 const { readFileSync } = require('fs');
 
-test('should parse input from a given json buffer/string', (t) => {
+test('module: should parse input from a given json buffer/string', (t) => {
   const result = count(readFileSync(join(__dirname, 'deployments.json')));
 
   t.deepEqual(result, {
@@ -14,7 +14,17 @@ test('should parse input from a given json buffer/string', (t) => {
   t.end();
 });
 
-test('should parse input from stdin', (t) => {
+test('module: should return sensible error on malformed JSON input', (t) => {
+  try {
+    count('}');
+    t.fail('should have thrown an error');
+  } catch (e) {
+    t.match(e.toString(), /Failed to parse provided JSON string/);
+    t.end();
+  }
+});
+
+test('CLI: should parse input from stdin', (t) => {
   const ret = execSync('cat deployments.json | ../bin/kcr.js', {
     cwd: __dirname
   });
@@ -24,12 +34,17 @@ test('should parse input from stdin', (t) => {
   t.end();
 });
 
-test('should return sensible error on malformed JSON input', (t) => {
+test('CLI: should parse files args', (t) => {
   try {
-    const result = count('}');
-    t.fail('should have thrown an error');
-  } catch (e) {
-    t.match(e.toString(), /Failed to parse provided JSON string/);
+    const ret = execSync('"./kcr.js" ../test/deployments.json', {
+      cwd: join(__dirname, '../bin'),
+      stdio: ['inherit', 'pipe', 'pipe']
+    });
+
+    t.match(ret.toString(), /Requests: 0.500 Cores \/ 1.000 Gi/);
+    t.match(ret.toString(), /Limits:   0.700 Cores \/ 1.500 Gi/);
     t.end();
+  } catch (e) {
+    t.fail(e.toString());
   }
 });
