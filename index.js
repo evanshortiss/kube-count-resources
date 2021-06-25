@@ -40,7 +40,7 @@ module.exports = function count(json) {
     return countResources(data);
   } catch (e) {
     if (e instanceof SyntaxError) {
-      console.error(`Failed to parse contents of file to JSON: ${opts.file}`);
+      throw new Error('Failed to parse provided JSON string');
     } else {
       throw e;
     }

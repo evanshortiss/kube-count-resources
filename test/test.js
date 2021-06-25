@@ -23,3 +23,13 @@ test('should parse input from stdin', (t) => {
   t.match(ret.toString(), /Limits:   0.700 Cores \/ 1.500 Gi/);
   t.end();
 });
+
+test('should return sensible error on malformed JSON input', (t) => {
+  try {
+    const result = count('}');
+    t.fail('should have thrown an error');
+  } catch (e) {
+    t.match(e.toString(), /Failed to parse provided JSON string/);
+    t.end();
+  }
+});
