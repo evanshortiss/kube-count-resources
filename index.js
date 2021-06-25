@@ -7,11 +7,6 @@
  */
 
 /**
- * @typedef {Object} Options
- * @property {String} file
- */
-
-/**
  * @typedef {Object} CountResultContainer
  * @property {number} cpu
  * @property {number} memory
