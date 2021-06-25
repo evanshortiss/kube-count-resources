@@ -1,0 +1,34 @@
+{
+  "name": "kcr",
+  "version": "0.1.0",
+  "description": "Nifty CLI to count resource request and limits for a List of Deployments",
+  "main": "index.js",
+  "bin": "bin/kcr.js",
+  "scripts": {
+    "test": "tape test/test.js"
+  },
+  "keywords": [],
+  "author": "Evan Shortiss <evanshortiss@gmail.com> (https://evanshortiss.com)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged --pattern \"**/*.js\""
+    }
+  },
+  "prettier": {
+    "trailingComma": "none",
+    "singleQuote": true
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^15.12.4",
+    "@types/tape": "^4.13.0",
+    "prettier": "^2.3.1",
+    "pretty-quick": "~3.1.0",
+    "husky": "~4.3.6",
+    "tape": "^5.2.2"
+  }
+}
