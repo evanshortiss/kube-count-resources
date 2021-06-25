@@ -19,7 +19,7 @@
 
 /**
  * Count the CPU and Memory usage for the given Deployments/DeploymentConfigs.
- * @param {Buffer} json
+ * @param {Buffer|String} json
  * @returns {Promise<CountResult>}
  */
 module.exports = function count(json) {
